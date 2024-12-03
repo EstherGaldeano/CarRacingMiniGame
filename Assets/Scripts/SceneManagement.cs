@@ -15,6 +15,8 @@ public class SceneManagement : MonoBehaviour
         
     }
 
+
+
     public void OneCarScene(){
         SceneManager.LoadScene("1Car");
     }
@@ -25,5 +27,10 @@ public class SceneManagement : MonoBehaviour
 
     public void FourCarScene(){
         SceneManager.LoadScene("4Car");
+    }
+
+      public void Exit()
+    {
+        Application.Quit();
     }
 }
