@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
 
@@ -5,8 +8,16 @@ public class timeToStart : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+
     [SerializeField]
     private float countdownTime = 3f;
+
+    [SerializeField]
+    private GameObject chronometer; //Prueba. GameObject cronometro del canvas
+
+    private float accuaccumulatedTime; //Prueba. Tiempo acumulado 
+
+    private TimeSpan gameTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +35,24 @@ public class timeToStart : MonoBehaviour
         else
         {
             player.GetComponent<CarController>().enabled = true;
+            StartChronometer(); //Empieza el cronometro cuando 
         }
     }
+
+
+    public void StartChronometer() //Empieza el crono
+    {
+        StartCoroutine (UpdateChrono());
+    }
+
+    IEnumerator UpdateChrono() //Actualiza el crono con el que pasa
+    {  
+            accuaccumulatedTime = accuaccumulatedTime + Time.deltaTime;
+            gameTime = TimeSpan.FromSeconds(accuaccumulatedTime);
+            chronometer.GetComponent<TMP_Text>().text = gameTime.ToString("mm':'ss'.'ff");
+
+        yield return null;  
+    }
+
+
 }
