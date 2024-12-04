@@ -1936,7 +1936,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400050, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 610502617}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100042, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 753680829}
   m_SourcePrefab: {fileID: 100100000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
 --- !u!1001 &279106768
 PrefabInstance:
@@ -6138,6 +6141,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400050, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
   m_PrefabInstance: {fileID: 273936465}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &753680829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753680819}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.6008606, y: 1.3103664, z: 5.195709}
+  m_Center: {x: 0.007659912, y: 0.7400594, z: -0.003829956}
 --- !u!1 &753747372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 49962341e1570844ea949d22791a525d, type: 3}
@@ -8762,7 +8786,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1:05:00
+  m_text: 00:00:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4b8def4c45240b48b7007a18c2f4190, type: 2}
   m_sharedMaterial: {fileID: -6451385154986340357, guid: c4b8def4c45240b48b7007a18c2f4190, type: 2}
@@ -13081,6 +13105,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695838944}
   m_CullTransparentMesh: 1
+--- !u!1 &1699371688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1699371690}
+  - component: {fileID: 1699371689}
+  - component: {fileID: 1699371691}
+  m_Layer: 0
+  m_Name: GoalCheckpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1699371689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699371688}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.892746, y: 5.3908434, z: 0.09877014}
+  m_Center: {x: -0.47128677, y: 2.3984928, z: 0.055854797}
+--- !u!4 &1699371690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699371688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 56.26949, y: 0.43, z: 170.992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1699371691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699371688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aea5f65ce0aed04eb1ddaa28f3b4aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  record: {fileID: 1154357213}
 --- !u!1 &1711297393
 GameObject:
   m_ObjectHideFlags: 0
@@ -13156,6 +13247,7 @@ MonoBehaviour:
   player: {fileID: 753680819}
   countdownTime: 3
   chronometer: {fileID: 1647899052}
+  goal: {fileID: 1699371688}
 --- !u!1 &1713593381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 629f486ef3a011d4dbae60341095fd8d, type: 3}
@@ -16069,3 +16161,4 @@ SceneRoots:
   - {fileID: 542896765}
   - {fileID: 1711297395}
   - {fileID: 273936465}
+  - {fileID: 1699371690}

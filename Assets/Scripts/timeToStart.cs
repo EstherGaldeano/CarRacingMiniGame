@@ -17,7 +17,11 @@ public class timeToStart : MonoBehaviour
 
     private float accuaccumulatedTime; //Prueba. Tiempo acumulado 
 
-    private TimeSpan gameTime;
+    public static TimeSpan gameTime; //Variable global para utilizarla en el script GoalCheckpoint
+
+    [SerializeField]
+    private GameObject goal;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,5 +58,10 @@ public class timeToStart : MonoBehaviour
         yield return null;  
     }
 
+   
 
 }
+
+
+    
+
