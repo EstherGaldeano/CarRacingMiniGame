@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 023f68899ecadf14eb6856366054ba1f
+  - enabled: 1
     path: Assets/Scenes/CarSelectionMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -13,10 +16,10 @@ EditorBuildSettings:
     guid: 697355c449524344dac98600d855ca70
   - enabled: 1
     path: Assets/Scenes/2Car.unity
-    guid: 8950c0e1c681fea40b5a5493b89c2a5b
+    guid: 2b2aead97f063ff4b938a4850f2c69bc
   - enabled: 1
     path: Assets/Scenes/4Car.unity
-    guid: 0bb4cd1485eee9d4ca7bad27902e1657
+    guid: 186878fc6b577dd4fba4597590b01c2e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

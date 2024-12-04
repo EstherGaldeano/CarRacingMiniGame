@@ -3,30 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ChangeScene(string sceneName)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
-    public void OneCarScene(){
-        SceneManager.LoadScene("1Car");
-    }
-
-    public void TwoCarScene(){
-        SceneManager.LoadScene("2Car");
-    }
-
-    public void FourCarScene(){
-        SceneManager.LoadScene("4Car");
+        SceneManager.LoadScene(sceneName);
     }
 
       public void Exit()
