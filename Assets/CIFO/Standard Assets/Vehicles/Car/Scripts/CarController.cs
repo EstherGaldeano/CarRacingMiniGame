@@ -56,9 +56,32 @@ namespace UnityStandardAssets.Vehicles.Car
         public float Revs { get; private set; }
         public float AccelInput { get; private set; }
 
+        //Añadido para coger el coche seleccionado en la escena de selección
+        [SerializeField]
+        private GameObject playerCars;
+
         // Use this for initialization
         private void Start()
         {
+            //Saber que posición ocupa el coche seleccionado y coger sus ruedas correspondientes
+            int carPosition = PlayerPrefs.GetInt("CARSELECTED");
+
+            //Si el coche es la ambulancia, sus hijos están en otro orden, por lo que las ruedas cambian de posición de hijos
+            if(carPosition == 4)
+            {
+                m_WheelMeshes[0] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(7).gameObject;
+                m_WheelMeshes[1] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(6).gameObject;
+                m_WheelMeshes[2] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(5).gameObject;
+                m_WheelMeshes[3] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(4).gameObject;
+            }
+            else //Para los que no son la ambulancia, los hijos mantienen la posición
+            {
+                m_WheelMeshes[0] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(5).gameObject;
+                m_WheelMeshes[1] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(4).gameObject;
+                m_WheelMeshes[2] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(3).gameObject;
+                m_WheelMeshes[3] = playerCars.gameObject.transform.GetChild(carPosition).gameObject.transform.GetChild(2).gameObject;
+            }   
+
             m_WheelMeshLocalRotations = new Quaternion[4];
             for (int i = 0; i < 4; i++)
             {
