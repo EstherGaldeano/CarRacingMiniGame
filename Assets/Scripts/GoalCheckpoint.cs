@@ -11,6 +11,9 @@ public class GoalCheckpoint : MonoBehaviour
 
     private int goalDetector; //Es un contador. El coche pasa dos veces por meta, en la salida y en la llegada. Se guardará el tiempo la segunda vez.
 
+    [SerializeField]
+    private GameObject lapComplete;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +40,7 @@ public class GoalCheckpoint : MonoBehaviour
         {
             recordSaved = true;
             record.GetComponent<TMP_Text>().text = timeToStart.gameTime.ToString("mm':'ss'.'ff");
+            lapComplete.SetActive(true); //Aparece canvas Complete
         }
     }
 }

@@ -26,6 +26,7 @@ public class Checkpoints : MonoBehaviour
                 warningMessage.SetActive(false);
             }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)

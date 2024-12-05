@@ -16,9 +16,12 @@ EditorBuildSettings:
     guid: 697355c449524344dac98600d855ca70
   - enabled: 1
     path: Assets/Scenes/2Car.unity
+    guid: 87d25c4b901ef3246b259ce91bf0353a
+  - enabled: 1
+    path: Assets/Scenes/2CarOld.unity
     guid: 2b2aead97f063ff4b938a4850f2c69bc
   - enabled: 1
-    path: Assets/Scenes/4Car.unity
+    path: Assets/Scenes/4CarOld.unity
     guid: 186878fc6b577dd4fba4597590b01c2e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
