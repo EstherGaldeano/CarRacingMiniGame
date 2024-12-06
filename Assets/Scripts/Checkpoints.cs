@@ -21,7 +21,7 @@ public class Checkpoints : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
            
-                if (lastCheckpoint != null && this.gameObject.layer == LayerMask.NameToLayer("PlayerLayer"))
+                if (lastCheckpoint != null && this.gameObject.tag == "Player")
                 {
                     gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position + new Vector3(-2.0f, 0.0f, 0.0f);
                     gameObject.transform.rotation = lastCheckpoint.transform.GetChild(0).rotation;
@@ -32,10 +32,10 @@ public class Checkpoints : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(KeyCode.RightAlt) )
+        if (Input.GetKeyDown(KeyCode.M) )
         {
             
-                if (lastCheckpoint != null && this.gameObject.layer == LayerMask.NameToLayer("SecondCarLayer"))
+                if (lastCheckpoint != null && this.gameObject.tag == "SecondCar")
                 {
 
                     gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position + new Vector3(2.0f, 0.0f, 0.0f);
