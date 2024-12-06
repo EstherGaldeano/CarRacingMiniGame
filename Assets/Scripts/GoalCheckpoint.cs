@@ -49,7 +49,7 @@ public class GoalCheckpoint : MonoBehaviour
         }
 
         //Pruebas con el detector a 1, pero tiene que ser 2 cuando funcione
-        if (goalDetector == 2 && !recordSaved && player.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && player.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed) 
+        if (player1GoalDetector == 2 && !recordSaved && player.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && player.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed) 
             //Si el coche pasa una segunda vez por la meta y ha pasado por el checkpoint del medio (aprox) y el �ltimo, guarda el tiempo y acaba la carrera
         {
             recordSaved = true;
