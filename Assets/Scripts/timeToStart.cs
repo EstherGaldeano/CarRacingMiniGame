@@ -3,11 +3,15 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
+using UnityEngine.SceneManagement;
 
 public class timeToStart : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private GameObject secondCar;
 
     [SerializeField]
     private float countdownTime = 3f;
@@ -31,6 +35,15 @@ public class timeToStart : MonoBehaviour
         player.GetComponent<CarController>().enabled = false;
 
         raceStarted = false;
+
+        /*Elimina los errores de objetos no referenciados en escenas donde no son necesarios.
+        * Por ejemplo, en la escena 1Car, no necesita referenciar el SecondCar. El hecho
+        * de no hacerlo, hace saltar un error grave.*/
+        if (SceneManager.GetActiveScene().name != "1Car") //Accede a los objetos referenciados si NO es la escena 1Car
+        {
+            secondCar.GetComponent<CarController>().enabled = false;
+        }
+
     }
 
     // Update is called once per frame
@@ -46,6 +59,11 @@ public class timeToStart : MonoBehaviour
             {
                 raceStarted = true;
                 player.GetComponent<CarController>().enabled = true;
+
+                if (SceneManager.GetActiveScene().name != "1Car") //Accede a los objetos referenciados si NO es la escena 1Car
+                {
+                    secondCar.GetComponent<CarController>().enabled = true;
+                }
             }
 
             StartChronometer(); //Empieza el cronometro cuando 
@@ -65,9 +83,6 @@ public class timeToStart : MonoBehaviour
 
         yield return null;  
     }
-
-   
-
 }
 
 
