@@ -2188,7 +2188,7 @@ PrefabInstance:
       objectReference: {fileID: 1875036079}
     - target: {fileID: 11400002, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: playerCars
@@ -6380,6 +6380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warningMessage: {fileID: 1839484518}
+  playerCar: {fileID: 0}
 --- !u!65 &677988729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7354,6 +7355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warningMessage: {fileID: 1839484518}
+  playerCar: {fileID: 0}
 --- !u!1 &753747372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 49962341e1570844ea949d22791a525d, type: 3}
@@ -9013,7 +9015,7 @@ PrefabInstance:
       objectReference: {fileID: 1978094110}
     - target: {fileID: 11400002, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: playerCars
@@ -14190,7 +14192,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425401897}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 59cfa81364f264c489d451674e175bde, type: 3}

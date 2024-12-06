@@ -16,15 +16,30 @@ public class Checkpoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && this.gameObject.tag == "Player")
         {
-            if (lastCheckpoint != null)
-            {
-                this.gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position;
-                this.gameObject.transform.rotation = lastCheckpoint.transform.GetChild(0).rotation;
-                CancelInvoke("ShowWarningMessage");
-                warningMessage.SetActive(false);
-            }
+           
+                if (lastCheckpoint != null)
+                {
+                    this.gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position + new Vector3(-2.0f, 0.0f, 0.0f);
+                    this.gameObject.transform.rotation = lastCheckpoint.transform.GetChild(0).rotation;
+                    CancelInvoke("ShowWarningMessage");
+                    warningMessage.SetActive(false);
+                }
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightAlt) && this.gameObject.tag == "SecondCar")
+        {
+            
+                if (lastCheckpoint != null)
+                {
+                    this.gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position + new Vector3(2.0f, 0.0f, 0.0f);
+                    this.gameObject.transform.rotation = lastCheckpoint.transform.GetChild(0).rotation;
+                    CancelInvoke("ShowWarningMessage");
+                    warningMessage.SetActive(false);
+                }
+            
         }
 
     }
