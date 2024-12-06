@@ -14,6 +14,9 @@ public class GoalCheckpoint : MonoBehaviour
     [SerializeField]
     private GameObject lapComplete;
 
+    [SerializeField]
+    private GameObject player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +39,8 @@ public class GoalCheckpoint : MonoBehaviour
         }
 
         //Pruebas con el detector a 1, pero tiene que ser 2 cuando funcione
-        if (goalDetector == 2 && !recordSaved) //Si el coche pasa una segunda vez por la meta guarda el tiempo
+        if (goalDetector == 2 && !recordSaved && player.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && player.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed) 
+            //Si el coche pasa una segunda vez por la meta y ha pasado por el checkpoint del medio (aprox) y el último, guarda el tiempo y acaba la carrera
         {
             recordSaved = true;
             record.GetComponent<TMP_Text>().text = timeToStart.gameTime.ToString("mm':'ss'.'ff");

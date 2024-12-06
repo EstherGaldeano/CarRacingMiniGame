@@ -21,26 +21,28 @@ namespace UnityStandardAssets.Vehicles.Car
 
         private void FixedUpdate()
         {
-            if (this.gameObject.tag == "Player")
+            if (m_Car.enabled)
             {
-                h = CrossPlatformInputManager.GetAxis("Horizontal");
-                v = CrossPlatformInputManager.GetAxis("Vertical");
-            }
-            else if (this.gameObject.tag == "SecondCar")
-            {
-                h = CrossPlatformInputManager.GetAxis("HorizontalSecondCar");
-                v = CrossPlatformInputManager.GetAxis("VerticalSecondCar");
-            }
-            
+                if (this.gameObject.tag == "Player")
+                {
+                    h = CrossPlatformInputManager.GetAxis("Horizontal");
+                    v = CrossPlatformInputManager.GetAxis("Vertical");
+                }
+                else if (this.gameObject.tag == "SecondCar")
+                {
+                    h = CrossPlatformInputManager.GetAxis("HorizontalSecondCar");
+                    v = CrossPlatformInputManager.GetAxis("VerticalSecondCar");
+                }
+
                 // pass the input to the car!
-              
+
 #if !MOBILE_INPUT
                 float handbrake = CrossPlatformInputManager.GetAxis("Jump");
                 m_Car.Move(h, v, v, handbrake);
 #else
-            m_Car.Move(h, v, v, 0f);
+                m_Car.Move(h, v, v, 0f);
 #endif
-            
+            }            
         }
     }
 }

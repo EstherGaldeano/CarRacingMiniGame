@@ -22,11 +22,15 @@ public class timeToStart : MonoBehaviour
     [SerializeField]
     private GameObject goal;
 
+    private bool raceStarted;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player.GetComponent<CarController>().enabled = false;
+
+        raceStarted = false;
     }
 
     // Update is called once per frame
@@ -38,11 +42,15 @@ public class timeToStart : MonoBehaviour
         }
         else
         {
-            player.GetComponent<CarController>().enabled = true;
+            if(!raceStarted)
+            {
+                raceStarted = true;
+                player.GetComponent<CarController>().enabled = true;
+            }
+
             StartChronometer(); //Empieza el cronometro cuando 
         }
     }
-
 
     public void StartChronometer() //Empieza el crono
     {
