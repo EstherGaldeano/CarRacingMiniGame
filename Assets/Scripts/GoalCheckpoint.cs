@@ -8,7 +8,11 @@ public class GoalCheckpoint : MonoBehaviour
     [SerializeField]
     private GameObject record;
 
+    [SerializeField]
+    private GameObject recordSecondCar;
+
     private bool recordSaved;
+    private bool recordSavedSecondCar;
 
     private int player1GoalDetector; //Es un contador. El coche pasa dos veces por meta, en la salida y en la llegada. Se guardar� el tiempo la segunda vez.
     private int player2GoalDetector;
@@ -21,10 +25,14 @@ public class GoalCheckpoint : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    [SerializeField]
+    private GameObject playerSecondCar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player1GoalDetector = 0;
+        player2GoalDetector = 0;
         recordSaved = false;
     }
 
@@ -67,10 +75,10 @@ public class GoalCheckpoint : MonoBehaviour
                 }
         }
 
-        if (player2GoalDetector == 2 && !recordSaved) //Si el coche pasa una segunda vez por la meta guarda el tiempo
+        if (player2GoalDetector == 2 && !recordSavedSecondCar) //Si el coche pasa una segunda vez por la meta guarda el tiempo
         {
-            recordSaved = true;
-            record.GetComponent<TMP_Text>().text = timeToStart.gameTime.ToString("mm':'ss'.'ff");
+            recordSavedSecondCar = true;
+            recordSecondCar.GetComponent<TMP_Text>().text = timeToStart.gameTimeSecondCar.ToString("mm':'ss'.'ff");
             winner.gameObject.SetActive(true);
             winner.transform.GetChild(2).gameObject.SetActive(true);      
         }

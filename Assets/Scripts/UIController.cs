@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.Vehicles.Car;
 
@@ -8,7 +9,13 @@ public class UIController : MonoBehaviour
     private Slider speedSlider;
 
     [SerializeField]
+    private Slider speedSliderSecondCar;
+
+    [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private GameObject secondCar;
 
     [SerializeField]
     private GameObject pausePanel;
@@ -31,7 +38,15 @@ public class UIController : MonoBehaviour
             speedSlider.value = player.GetComponent<CarController>().CurrentSpeed;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (SceneManager.GetActiveScene().name != "1Car")
+        {
+            if (secondCar.GetComponent<CarController>().enabled)
+            {
+                speedSliderSecondCar.value = secondCar.GetComponent<CarController>().CurrentSpeed;
+            }
+        }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseMenu();
         }

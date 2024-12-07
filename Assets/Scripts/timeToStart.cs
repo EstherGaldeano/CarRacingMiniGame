@@ -19,9 +19,13 @@ public class timeToStart : MonoBehaviour
     [SerializeField]
     private GameObject chronometer; //Prueba. GameObject cronometro del canvas
 
-    private float accuaccumulatedTime; //Prueba. Tiempo acumulado 
+    [SerializeField]
+    private GameObject chronometerSecondCar; //Prueba. GameObject cronometro del canvas
+
+    private float accumulatedTime; //Prueba. Tiempo acumulado 
 
     public static TimeSpan gameTime; //Variable global para utilizarla en el script GoalCheckpoint
+    public static TimeSpan gameTimeSecondCar; //Variable global para utilizarla en el script GoalCheckpoint
 
     [SerializeField]
     private GameObject goal;
@@ -77,9 +81,15 @@ public class timeToStart : MonoBehaviour
 
     IEnumerator UpdateChrono() //Actualiza el crono con el que pasa
     {  
-            accuaccumulatedTime = accuaccumulatedTime + Time.deltaTime;
-            gameTime = TimeSpan.FromSeconds(accuaccumulatedTime);
+            accumulatedTime = accumulatedTime + Time.deltaTime;
+            gameTime = TimeSpan.FromSeconds(accumulatedTime);
             chronometer.GetComponent<TMP_Text>().text = gameTime.ToString("mm':'ss'.'ff");
+           
+        if (SceneManager.GetActiveScene().name != "1Car") //Condicion para que solo se utilice el crono del segundo en coche en la escena 2Car y 4car
+            {
+                gameTimeSecondCar = TimeSpan.FromSeconds(accumulatedTime);
+                chronometerSecondCar.GetComponent<TMP_Text>().text = gameTimeSecondCar.ToString("mm':'ss'.'ff");
+            }
 
         yield return null;  
     }
