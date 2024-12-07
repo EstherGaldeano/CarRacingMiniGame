@@ -14,18 +14,32 @@ public class timeToStart : MonoBehaviour
     private GameObject secondCar;
 
     [SerializeField]
+    private GameObject thirdCar;
+
+    [SerializeField]
+    private GameObject fourthCar;
+
+    [SerializeField]
     private float countdownTime = 3f;
 
     [SerializeField]
-    private GameObject chronometer; //Prueba. GameObject cronometro del canvas
+    private GameObject chronometer; //GameObject cronometro del canvas
 
     [SerializeField]
-    private GameObject chronometerSecondCar; //Prueba. GameObject cronometro del canvas
+    private GameObject chronometerSecondCar; //GameObject cronometro del canvas
 
-    private float accumulatedTime; //Prueba. Tiempo acumulado 
+    [SerializeField]
+    private GameObject chronometerThirdCar; //GameObject cronometro del canvas
+
+    [SerializeField]
+    private GameObject chronometerFourthCar; //GameObject cronometro del canvas
+
+    private float accumulatedTime; //Tiempo acumulado 
 
     public static TimeSpan gameTime; //Variable global para utilizarla en el script GoalCheckpoint
     public static TimeSpan gameTimeSecondCar; //Variable global para utilizarla en el script GoalCheckpoint
+    public static TimeSpan gameTimeThirdCar; //Variable global para utilizarla en el script GoalCheckpoint
+    public static TimeSpan gameTimeFourthCar; //Variable global para utilizarla en el script GoalCheckpoint
 
     [SerializeField]
     private GameObject goal;
@@ -48,6 +62,12 @@ public class timeToStart : MonoBehaviour
             secondCar.GetComponent<CarController>().enabled = false;
         }
 
+        if (SceneManager.GetActiveScene().name != "1Car" && SceneManager.GetActiveScene().name != "2Car") 
+        {
+            thirdCar.GetComponent<CarController>().enabled = false;
+            fourthCar.GetComponent<CarController>().enabled = false;
+        }
+
     }
 
     // Update is called once per frame
@@ -67,6 +87,12 @@ public class timeToStart : MonoBehaviour
                 if (SceneManager.GetActiveScene().name != "1Car") //Accede a los objetos referenciados si NO es la escena 1Car
                 {
                     secondCar.GetComponent<CarController>().enabled = true;
+                }
+
+                if (SceneManager.GetActiveScene().name != "1Car" && SceneManager.GetActiveScene().name != "2Car")
+                {
+                    thirdCar.GetComponent<CarController>().enabled = true;
+                    fourthCar.GetComponent<CarController>().enabled = true;
                 }
             }
 
@@ -91,7 +117,16 @@ public class timeToStart : MonoBehaviour
                 chronometerSecondCar.GetComponent<TMP_Text>().text = gameTimeSecondCar.ToString("mm':'ss'.'ff");
             }
 
-        yield return null;  
+        if (SceneManager.GetActiveScene().name != "1Car" && SceneManager.GetActiveScene().name != "2Car") //Crono para el tercer y cuarto coche en la escena 4Car
+        {
+            gameTimeThirdCar = TimeSpan.FromSeconds(accumulatedTime);
+            chronometerThirdCar.GetComponent<TMP_Text>().text = gameTimeThirdCar.ToString("mm':'ss'.'ff");
+            
+            gameTimeFourthCar = TimeSpan.FromSeconds(accumulatedTime);
+            chronometerFourthCar.GetComponent<TMP_Text>().text = gameTimeFourthCar.ToString("mm':'ss'.'ff");
+        }
+
+     yield return null;  
     }
 }
 

@@ -38,7 +38,7 @@ public class Checkpoints : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.N))
         {            
             if (lastCheckpoint != null && this.gameObject.tag == "SecondCar")
             {
@@ -51,6 +51,36 @@ public class Checkpoints : MonoBehaviour
                 this.GetComponent<CarController>().m_Rigidbody.linearVelocity = Vector3.zero;
             }
             
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (lastCheckpoint != null && this.gameObject.tag == "ThirdCar")
+            {
+                gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position + new Vector3(-2.0f, 0.0f, 4.0f);
+                gameObject.transform.rotation = lastCheckpoint.transform.GetChild(0).rotation;
+                CancelInvoke("ShowWarningMessageP3");
+                //warningMessage.SetActive(false);
+                warningMessage.transform.GetChild(2).gameObject.SetActive(false);
+                this.GetComponent<CarController>().enabled = true;
+                this.GetComponent<CarController>().m_Rigidbody.linearVelocity = Vector3.zero;
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (lastCheckpoint != null && this.gameObject.tag == "FourthCar")
+            {
+                gameObject.transform.position = lastCheckpoint.transform.GetChild(0).position + new Vector3(2.0f, 0.0f, 4.0f);
+                gameObject.transform.rotation = lastCheckpoint.transform.GetChild(0).rotation;
+                CancelInvoke("ShowWarningMessageP4");
+                //warningMessage.SetActive(false);
+                warningMessage.transform.GetChild(3).gameObject.SetActive(false);
+                this.GetComponent<CarController>().enabled = true;
+                this.GetComponent<CarController>().m_Rigidbody.linearVelocity = Vector3.zero;
+            }
+
         }
     }
 
@@ -71,23 +101,61 @@ public class Checkpoints : MonoBehaviour
         }
         if (other.gameObject.tag == "Terrain")
         {
-            if (SceneManager.GetActiveScene().name == "1Car")
+            if (this.gameObject.tag == "Player")
             {
                 Invoke("ShowWarningMessage", 1.5f);
             }
-
-            if (SceneManager.GetActiveScene().name == "2Car")
+            else if (this.gameObject.tag == "SecondCar")
             {
-                if (this.gameObject.tag == "Player")
-                {
-                    Invoke("ShowWarningMessage", 1.5f);
-                }
-                else if (this.gameObject.tag == "SecondCar")
-                {
-                    Invoke("ShowWarningMessageP2", 1.5f);
-                }
+                Invoke("ShowWarningMessageP2", 1.5f);
             }
-            
+            else if (this.gameObject.tag == "ThirdCar")
+            {
+                Invoke("ShowWarningMessageP3", 1.5f);
+            }
+            else if (this.gameObject.tag == "FourthCar")
+            {
+                Invoke("ShowWarningMessageP4", 1.5f);
+            }
+
+            //Antiguo Script por si las moscas
+            /* if (SceneManager.GetActiveScene().name == "1Car")
+             {
+                 Invoke("ShowWarningMessage", 1.5f);
+             }
+
+             if (SceneManager.GetActiveScene().name == "2Car")
+             {
+                 if (this.gameObject.tag == "Player")
+                 {
+                     Invoke("ShowWarningMessage", 1.5f);
+                 }
+                 else if (this.gameObject.tag == "SecondCar")
+                 {
+                     Invoke("ShowWarningMessageP2", 1.5f);
+                 }
+             }
+
+             if (SceneManager.GetActiveScene().name == "4Car")
+             {
+                 if (this.gameObject.tag == "Player")
+                 {
+                     Invoke("ShowWarningMessage", 1.5f);
+                 }
+                 else if (this.gameObject.tag == "SecondCar")
+                 {
+                     Invoke("ShowWarningMessageP2", 1.5f);
+                 }
+                 else if (this.gameObject.tag == "ThirdCar")
+                 {
+                     Invoke("ShowWarningMessageP3", 1.5f);
+                 }
+                 else if (this.gameObject.tag == "FourthCar")
+                 {
+                     Invoke("ShowWarningMessageP4", 1.5f);
+                 }
+             }*/
+
             StopCar();
         }
     }
@@ -103,6 +171,18 @@ public class Checkpoints : MonoBehaviour
     {
        // warningMessage.SetActive(true);
         warningMessage.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    public void ShowWarningMessageP3()
+    {
+        // warningMessage.SetActive(true);
+        warningMessage.transform.GetChild(2).gameObject.SetActive(true);
+    }
+
+    public void ShowWarningMessageP4()
+    {
+        // warningMessage.SetActive(true);
+        warningMessage.transform.GetChild(3).gameObject.SetActive(true);
     }
 
     public void StopCar()

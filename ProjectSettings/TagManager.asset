@@ -8,6 +8,8 @@ TagManager:
   - Track
   - Terrain
   - SecondCar
+  - ThirdCar
+  - FourthCar
   layers:
   - Default
   - TransparentFX

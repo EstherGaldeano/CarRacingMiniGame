@@ -12,10 +12,22 @@ public class UIController : MonoBehaviour
     private Slider speedSliderSecondCar;
 
     [SerializeField]
+    private Slider speedSliderThirdCar;
+
+    [SerializeField]
+    private Slider speedSliderFourthCar;
+
+    [SerializeField]
     private GameObject player;
 
     [SerializeField]
     private GameObject secondCar;
+
+    [SerializeField]
+    private GameObject thirdCar;
+
+    [SerializeField]
+    private GameObject fourthCar;
 
     [SerializeField]
     private GameObject pausePanel;
@@ -46,7 +58,20 @@ public class UIController : MonoBehaviour
             }
         }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+        if (SceneManager.GetActiveScene().name != "1Car" && SceneManager.GetActiveScene().name != "2Car")
+        {
+            if (thirdCar.GetComponent<CarController>().enabled)
+            {
+                speedSliderThirdCar.value = thirdCar.GetComponent<CarController>().CurrentSpeed;
+            }
+
+            if (fourthCar.GetComponent<CarController>().enabled)
+            {
+                speedSliderFourthCar.value = fourthCar.GetComponent<CarController>().CurrentSpeed;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseMenu();
         }

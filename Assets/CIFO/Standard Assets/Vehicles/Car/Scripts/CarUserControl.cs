@@ -33,6 +33,16 @@ namespace UnityStandardAssets.Vehicles.Car
                     h = CrossPlatformInputManager.GetAxis("HorizontalSecondCar");
                     v = CrossPlatformInputManager.GetAxis("VerticalSecondCar");
                 }
+                else if (this.gameObject.tag == "ThirdCar")
+                {
+                    h = CrossPlatformInputManager.GetAxis("HorizontalThirdCar");
+                    v = CrossPlatformInputManager.GetAxis("VerticalThirdCar");
+                }
+                else if (this.gameObject.tag == "FourthCar")
+                {
+                    h = CrossPlatformInputManager.GetAxis("HorizontalFourthCar");
+                    v = CrossPlatformInputManager.GetAxis("VerticalFourthCar");
+                }
 
                 // pass the input to the car!
 
