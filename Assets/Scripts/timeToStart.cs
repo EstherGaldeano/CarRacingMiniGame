@@ -9,13 +9,10 @@ public class timeToStart : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
-
     [SerializeField]
     private GameObject secondCar;
-
     [SerializeField]
     private GameObject thirdCar;
-
     [SerializeField]
     private GameObject fourthCar;
 
@@ -24,13 +21,10 @@ public class timeToStart : MonoBehaviour
 
     [SerializeField]
     private GameObject chronometer; //GameObject cronometro del canvas
-
     [SerializeField]
     private GameObject chronometerSecondCar; //GameObject cronometro del canvas
-
     [SerializeField]
     private GameObject chronometerThirdCar; //GameObject cronometro del canvas
-
     [SerializeField]
     private GameObject chronometerFourthCar; //GameObject cronometro del canvas
 

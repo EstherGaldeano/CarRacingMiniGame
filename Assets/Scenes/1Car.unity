@@ -212,10 +212,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1320015010}
   - {fileID: 1596647055}
   - {fileID: 1095696119}
   - {fileID: 687217760}
+  - {fileID: 1320015010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2060,6 +2060,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2259,6 +2267,26 @@ PrefabInstance:
     - target: {fileID: 2300024, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500004, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_Size.x
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500004, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_Size.y
+      value: 2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500004, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_Size.z
+      value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500004, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_Center.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500004, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+      propertyPath: m_Center.z
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8200010, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
       propertyPath: m_Enabled
@@ -5095,7 +5123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550433068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711297396}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &550433068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7481,7 +7521,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 777664569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1711297394}
+        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1Car
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &777664569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9162,7 +9214,7 @@ GameObject:
   - component: {fileID: 952506221}
   - component: {fileID: 952506220}
   m_Layer: 5
-  m_Name: Winner
+  m_Name: WinnerBORRAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9224,7 +9276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 358, y: 201.5}
+  m_AnchoredPosition: {x: 3586.5571, y: 2017.5635}
   m_SizeDelta: {x: 360, y: 165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &956382389
@@ -11504,6 +11556,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.52478, y: 3.6769938, z: 3.3}
   m_Center: {x: 9.464798, y: 1.8384969, z: 1.65}
+--- !u!1 &1249054881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 3}
+  m_PrefabInstance: {fileID: 273936465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1249631612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16029,9 +16086,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   record: {fileID: 1154357213}
   recordSecondCar: {fileID: 0}
-  winner: {fileID: 0}
+  recordThirdCar: {fileID: 0}
+  recordFourthCar: {fileID: 0}
+  winner: {fileID: 246546265}
   player: {fileID: 753680819}
   playerSecondCar: {fileID: 0}
+  playerThirdCar: {fileID: 0}
+  playerFourthCar: {fileID: 0}
 --- !u!1 &1711297393
 GameObject:
   m_ObjectHideFlags: 0
@@ -16093,9 +16154,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedSlider: {fileID: 1651272105}
   speedSliderSecondCar: {fileID: 0}
+  speedSliderThirdCar: {fileID: 0}
+  speedSliderFourthCar: {fileID: 0}
   player: {fileID: 753680819}
   secondCar: {fileID: 0}
-  pausePanel: {fileID: 0}
+  thirdCar: {fileID: 0}
+  fourthCar: {fileID: 0}
+  pausePanel: {fileID: 1596647054}
 --- !u!114 &1711297397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16110,9 +16175,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 753680819}
   secondCar: {fileID: 86230954}
+  thirdCar: {fileID: 0}
+  fourthCar: {fileID: 0}
   countdownTime: 3
   chronometer: {fileID: 1647899052}
   chronometerSecondCar: {fileID: 0}
+  chronometerThirdCar: {fileID: 0}
+  chronometerFourthCar: {fileID: 0}
   goal: {fileID: 1699371688}
 --- !u!114 &1711297398
 MonoBehaviour:
@@ -16128,7 +16197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelHubs: {fileID: 287801726}
   playerCars: {fileID: 986244090}
-  collidersCar: {fileID: 0}
+  collidersCar: {fileID: 1249054881}
 --- !u!1 &1713593381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 629f486ef3a011d4dbae60341095fd8d, type: 3}
@@ -16645,16 +16714,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1711297394}
         m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: Exit
-        m_Mode: 1
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1757542806

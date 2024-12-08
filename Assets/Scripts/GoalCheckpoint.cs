@@ -7,13 +7,10 @@ public class GoalCheckpoint : MonoBehaviour
 {
     [SerializeField]
     private GameObject record;
-
     [SerializeField]
     private GameObject recordSecondCar;
-
     [SerializeField]
     private GameObject recordThirdCar;
-
     [SerializeField]
     private GameObject recordFourthCar;
 
@@ -32,15 +29,14 @@ public class GoalCheckpoint : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
-
     [SerializeField]
     private GameObject playerSecondCar;
-
     [SerializeField]
     private GameObject playerThirdCar;
-
     [SerializeField]
     private GameObject playerFourthCar;
+
+    private string recordNow;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,21 +44,50 @@ public class GoalCheckpoint : MonoBehaviour
         player1GoalDetector = 0;
         player2GoalDetector = 0;
         recordSaved = false;
+        recordSavedSecondCar = false;
+        recordSavedThirdCar = false;
+        recordSavedFourthCar = false;
+
+        if (!PlayerPrefs.HasKey("RECORDTIME"))
+        {
+            PlayerPrefs.SetFloat("RECORDTIME", 300.0f);
+        }
+        UpdateRecordTexts();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateRecordTexts()
     {
+        recordNow = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("RECORDTIME")).ToString("mm':'ss'.'ff");
 
+        record.GetComponent<TMP_Text>().text = recordNow;
+
+        if (SceneManager.GetActiveScene().name == "2Car" || SceneManager.GetActiveScene().name == "4Car")
+        {
+            recordSecondCar.GetComponent<TMP_Text>().text = recordNow;
+        }
+
+        if (SceneManager.GetActiveScene().name == "4Car")
+        {
+            recordThirdCar.GetComponent<TMP_Text>().text = recordNow;
+            recordFourthCar.GetComponent<TMP_Text>().text = recordNow;
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Delete))
+        {
+            PlayerPrefs.SetFloat("RECORDTIME", 300.0f);
+
+            UpdateRecordTexts();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("detecta el coche");
-            player1GoalDetector++; //Suma uno al detector
+            player1GoalDetector++; //Suma uno al detector del player 1
         }
         
         else if (other.gameObject.tag == "SecondCar")
@@ -72,56 +97,82 @@ public class GoalCheckpoint : MonoBehaviour
 
         else if (other.gameObject.tag == "ThirdCar")
         {
-            player3GoalDetector++; //Suma uno al detector del player 2
+            player3GoalDetector++; //Suma uno al detector del player 3
         }
 
         else if (other.gameObject.tag == "FourthCar")
         {
-            player4GoalDetector++; //Suma uno al detector del player 2
+            player4GoalDetector++; //Suma uno al detector del player 4
         }
 
-        //Pruebas con el detector a 1, pero tiene que ser 2 cuando funcione
-        if (player1GoalDetector == 2 && !recordSaved && player.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && player.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed) 
-            //Si el coche pasa una segunda vez por la meta y ha pasado por el checkpoint del medio (aprox) y el �ltimo, guarda el tiempo y acaba la carrera
+        if (player1GoalDetector >= 2 && !recordSaved && player.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && player.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed) 
         {
             recordSaved = true;
-            record.GetComponent<TMP_Text>().text = timeToStart.gameTime.ToString("mm':'ss'.'ff");
 
-                if (SceneManager.GetActiveScene().name == "1Car") //Si estamos en la escena 1Car sale este cartelito Lap complete
-                {
-                    winner.gameObject.SetActive(true);
-                    winner.transform.GetChild(0).gameObject.SetActive(true);
-                }
-                else //Si estamos en las otras escenas 2Car y 4Car se activa player1Wins
-                {
-                     winner.gameObject.SetActive(true);
-                     winner.transform.GetChild(1).gameObject.SetActive(true);
-                }
+            if(timeToStart.gameTime.TotalSeconds < PlayerPrefs.GetFloat("RECORDTIME"))
+            {
+                PlayerPrefs.SetFloat("RECORDTIME", (float)timeToStart.gameTime.TotalSeconds);
+            }
+
+            winner.gameObject.SetActive(true);
+            winner.transform.GetChild(1).gameObject.SetActive(true);
+
+            CancelInvoke("GoToMainmenu");
+            Invoke("GoToMainmenu", 3.0f);
         }
 
-        if (player2GoalDetector == 2 && !recordSavedSecondCar) //Si el coche pasa una segunda vez por la meta guarda el tiempo
+        if (player2GoalDetector >= 2 && !recordSavedSecondCar && playerSecondCar.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && playerSecondCar.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed)
         {
             recordSavedSecondCar = true;
-            recordSecondCar.GetComponent<TMP_Text>().text = timeToStart.gameTimeSecondCar.ToString("mm':'ss'.'ff");
+
+            if (timeToStart.gameTimeSecondCar.TotalSeconds < PlayerPrefs.GetFloat("RECORDTIME"))
+            {
+                PlayerPrefs.SetFloat("RECORDTIME", (float)timeToStart.gameTimeSecondCar.TotalSeconds);
+            }
+
             winner.gameObject.SetActive(true);
-            winner.transform.GetChild(2).gameObject.SetActive(true);      
+            winner.transform.GetChild(2).gameObject.SetActive(true);
+
+            CancelInvoke("GoToMainmenu");
+            Invoke("GoToMainmenu", 3.0f);
         }
 
-        if (player3GoalDetector == 2 && !recordSavedThirdCar) //Si el coche pasa una segunda vez por la meta guarda el tiempo
+        if (player3GoalDetector >= 2 && !recordSavedThirdCar && playerThirdCar.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && playerThirdCar.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed)
         {
             recordSavedThirdCar = true;
-            recordThirdCar.GetComponent<TMP_Text>().text = timeToStart.gameTimeThirdCar.ToString("mm':'ss'.'ff");
+
+            if (timeToStart.gameTimeThirdCar.TotalSeconds < PlayerPrefs.GetFloat("RECORDTIME"))
+            {
+                PlayerPrefs.SetFloat("RECORDTIME", (float)timeToStart.gameTimeThirdCar.TotalSeconds);
+            }
+
             winner.gameObject.SetActive(true);
             winner.transform.GetChild(3).gameObject.SetActive(true);
+
+            CancelInvoke("GoToMainmenu");
+            Invoke("GoToMainmenu", 3.0f);
         }
 
-        if (player4GoalDetector == 2 && !recordSavedFourthCar) //Si el coche pasa una segunda vez por la meta guarda el tiempo
+        if (player4GoalDetector >= 2 && !recordSavedFourthCar && playerFourthCar.gameObject.GetComponent<Checkpoints>().midleCheckpointPassed && playerFourthCar.gameObject.GetComponent<Checkpoints>().finalCheckpointPassed)
         {
             recordSavedFourthCar = true;
-            recordFourthCar.GetComponent<TMP_Text>().text = timeToStart.gameTimeFourthCar.ToString("mm':'ss'.'ff");
+
+            if (timeToStart.gameTimeFourthCar.TotalSeconds < PlayerPrefs.GetFloat("RECORDTIME"))
+            {
+                PlayerPrefs.SetFloat("RECORDTIME", (float)timeToStart.gameTimeFourthCar.TotalSeconds);
+            }
+
             winner.gameObject.SetActive(true);
             winner.transform.GetChild(4).gameObject.SetActive(true);
+
+            CancelInvoke("GoToMainmenu");
+            Invoke("GoToMainmenu", 3.0f);
         }
 
+    }
+
+    public void GoToMainmenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
