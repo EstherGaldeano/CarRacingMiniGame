@@ -57,7 +57,7 @@ InputManager:
     m_Name: HorizontalFourthCar
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: k
+    negativeButton: i
     positiveButton: p
     altNegativeButton: 
     altPositiveButton: 
@@ -121,8 +121,8 @@ InputManager:
     m_Name: VerticalFourthCar
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: l
-    positiveButton: o
+    negativeButton: o
+    positiveButton: 9
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
